@@ -1,2 +1,7 @@
 
 .settings/org.eclipse.mylyn.tasks.ui.prefs
+*.swp
+*.pyc
+*.db
+*.out
+
