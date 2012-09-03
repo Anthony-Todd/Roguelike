@@ -1,3 +1,4 @@
-import Component
+import Components
 import Entity
-import Manager
+
+from Factory import *
