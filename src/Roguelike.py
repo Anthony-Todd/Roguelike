@@ -4,6 +4,10 @@ Created on Sep 2, 2012
 @author: anthony
 '''
 import cocos
+import pyglet
+
+pyglet.resource.path = ['../assets']
+pyglet.resource.reindex()
 
 cocos.director.director.init()
 
