@@ -24,5 +24,4 @@ class Level( cocos.layer.Layer ):
             self.add( l )
         
         self.backGround.add( Entity.Factory.Create_Spirte('roguelike_basicclassdiagram.png', (320,240) ), 0, 'test' )
-
         

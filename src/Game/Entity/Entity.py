@@ -29,7 +29,6 @@ class Entity( CocosNode ):
             else:
                 self.componentDict[component_type] = [ component ]
                 component.SetEntity( self )
-                
             
             
     

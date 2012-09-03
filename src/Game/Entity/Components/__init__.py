@@ -1,1 +1,2 @@
-import Rendered_Component
+from Managers import *
+from Rendered_Component import *

@@ -6,6 +6,7 @@ Created on Sep 2, 2012
 import cocos
 import Level
 import UI
+import Entity
 
 class Game( cocos.scene.Scene ):
     '''
@@ -22,3 +23,8 @@ class Game( cocos.scene.Scene ):
         super( Game, self ).__init__( )
         for l in [ self.level, self.ui ]:
             self.add( l )
+        self.schedule( self.Update )
+    
+    def Update(self,dt):
+        print dt
+        Entity.Components.g_RenderSpriteManager.Update(dt)
