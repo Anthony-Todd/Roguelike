@@ -18,12 +18,12 @@ class Game( cocos.scene.Scene ):
         '''
         Constructor
         '''
-        self.level = Level.Level( parent=self );
+        self.level = Level.Level(parent=self);
         self.ui    = UI.UI()
-        super( Game, self ).__init__( )
-        for l in [ self.level, self.ui ]:
-            self.add( l )
-        self.schedule( self.Update )
+        super(Game, self).__init__()
+        for l in [self.level, self.ui]:
+            self.add(l)
+        self.schedule(self.Update)
     
     def Update(self,dt):
         print dt

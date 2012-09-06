@@ -6,15 +6,15 @@ Created on Sep 2, 2012
 
 import cocos.layer
 
-class UI( cocos.layer.Layer ):
+class UI(cocos.layer.Layer):
     '''
     classdocs
     '''
 
 
-    def __init__( self, *argv, **kwargv ):
+    def __init__(self, *argv, **kwargv):
         '''
         Constructor
         '''
-        super( UI, self).__init__()
+        super(UI, self).__init__()
         

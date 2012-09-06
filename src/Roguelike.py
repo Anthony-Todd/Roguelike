@@ -16,4 +16,4 @@ print 'har'
 from Game import g_GameInstance
 
 if __name__ == '__main__':
-    cocos.director.director.run (g_GameInstance)
+    cocos.director.director.run(g_GameInstance)

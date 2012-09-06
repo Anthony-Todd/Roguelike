@@ -10,31 +10,31 @@ class Entity( CocosNode ):
     '''
 
 
-    def __init__(self, **kwargv ):
-        super( Entity, self ).__init__()
+    def __init__(self, **kwargv):
+        super(Entity, self).__init__()
         componentList = kwargv.get('Components')
-        print componentList, type( componentList )
+        print componentList, type(componentList)
         self.componentDict = {}
-        self.AddComonents( componentList )
+        self.AddComponents(componentList)
         
-    def AddComonents( self, *components ):
+    def AddComponents(self, *components):
         for component in components:
             component_type = type(component)
             print "Type: %s" % component_type
             
-            if self.componentDict.has_key(component_type) is True:
-                if component.isUnique is False:
+            if component_type in self.componentDict:
+                if not component.isUnique:
                     self.componentDict[component_type].append(component)
                     component.SetEntity( self )
             else:
-                self.componentDict[component_type] = [ component ]
-                component.SetEntity( self )
+                self.componentDict[component_type] = [component]
+                component.SetEntity(self)
             
             
     
-    def RemoveComponents( self, *components ):
+    def RemoveComponents(self, *components):
         pass
     
-    def RemoveComponentsOfType( self, component_type ):
+    def RemoveComponentsOfType(self, component_type):
         pass
         

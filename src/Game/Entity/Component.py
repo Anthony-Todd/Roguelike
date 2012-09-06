@@ -10,7 +10,7 @@ class Component(object):
     '''
 
 
-    def __init__(self, *argv, **kwargv ):
+    def __init__(self, *argv, **kwargv):
         '''
         Constructor
         '''
