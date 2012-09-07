@@ -19,9 +19,19 @@ class Level(cocos.layer.Layer):
         self.backGround = cocos.layer.Layer()
         self.foreGround  = cocos.layer.Layer()
         self.player     = cocos.layer.Layer()
+        self.entityList = []
         super(Level, self).__init__()
         for l in [self.backGround, self.foreGround, self.player]:
             self.add(l)
         
-        self.backGround.add(Entity.Factory.Create_Spirte('roguelike_basicclassdiagram.png', (320,240)), 0, 'test')
+        #self.backGround.add(Entity.Factory.Create_Spirte('roguelike_basicclassdiagram.png', (320,240)), 0, 'test')
+    
+    def LoadLevel(self,Filename):
+        pass
+        # loaded the tiled level from assets levels directory.
+    
+    def GenerateEntitys(self):
+        pass
+
+    
         

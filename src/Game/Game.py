@@ -27,4 +27,3 @@ class Game( cocos.scene.Scene ):
     
     def Update(self,dt):
         print dt
-        Entity.Components.g_RenderSpriteManager.Update(dt)

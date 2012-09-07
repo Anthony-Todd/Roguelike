@@ -6,13 +6,11 @@ Created on Sep 2, 2012
 import cocos
 import pyglet
 
-print 'start'
 pyglet.resource.path = ['../assets']
 pyglet.resource.reindex()
 
 cocos.director.director.init()
 
-print 'har'
 from Game import g_GameInstance
 
 if __name__ == '__main__':

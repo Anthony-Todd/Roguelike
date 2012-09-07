@@ -1,6 +1,5 @@
-
 .settings/org.eclipse.mylyn.tasks.ui.prefs
-
 *.pyc
-
 src/Game/.DS_Store
+
+src/Game/Level.pyc
