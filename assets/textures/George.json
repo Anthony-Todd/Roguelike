@@ -1,0 +1,22 @@
+{
+    "image":"george.png",
+    "x":4,
+    "y":4,
+    "characters":
+    [
+        {
+            "name":"george",
+            "animations":
+            [
+			    { "id":"walk_up",	"sequence": [2,6,10,14], "loop":true, "speed":0.09375 },
+			    { "id":"walk_right","sequence": [3,7,11,15], "loop":true, "speed":0.09375 },
+			    { "id":"walk_left", "sequence": [1,5,9,13],	 "loop":true, "speed":0.09375 },
+			    { "id":"walk_down",	"sequence": [0,4,8,12],	 "loop":true, "speed":0.09375 },
+			    { "id":"idle_up", 	"sequence": [6],       	 "loop":true, "speed":0.09375 },
+			    { "id":"idle_right","sequence": [7],       	 "loop":true, "speed":0.09375 },
+			    { "id":"idle_left",	"sequence": [5],       	 "loop":true, "speed":0.09375 },
+			    { "id":"idle_down", "sequence": [4],       	 "loop":true, "speed":0.09375 }
+        	]
+        }
+    ]
+}

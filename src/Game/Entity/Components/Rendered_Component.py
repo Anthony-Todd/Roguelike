@@ -21,12 +21,28 @@ class RenderedSpriteComponent( Component ):
         '''
         global g_RenderSpriteManager
         g_RenderSpriteManager.components.append(self)
-        image = kwargv.get('image')
-        if kwargv.has_key('position'):
-            position = kwargv.get('position')
+        
+        #super(Component, self).__init__(isUnique=False)
+        Component.__init__(self,isUnique=False)
+        image = None
+        self.animations = {}
+        self.sprite = None
+        position = (0,0)
+        if 'position' in kwargv:
+            position = kwargv['position']
+        if 'animations' in kwargv:
+            self.animations = kwargv['animations']
+        if 'image' in kwargv:
+            image = kwargv.get('image')
+        if 'defaultAnimation' in kwargv:
+            default = kwargv.get('defaultAnimation')
+            if default in self.animations:
+                self.sprite = sprite.Sprite(self.animations[default], position)
         else:
-            position = (0,0)
-        self.sprite = sprite.Sprite(image, position)
+            self.sprite = sprite.Sprite(image, position)
+        
+        if self.entity is not None:
+            self.SetEntity(self.entity)
     
     def __del__(self):
         global g_RenderSpriteManager
@@ -36,6 +52,14 @@ class RenderedSpriteComponent( Component ):
         pass
     
     def SetEntity(self, entity):
-        print 'Chiled'
-        entity.add( self.sprite )
+        self.entity = entity
+        if self.sprite is not None:
+            entity.add( self.sprite )
+    
+    def SetAnimations(self, **animations):
+        self.animations = animations
+    
+    def Play(self, key):
+        if key in self.animations:
+            self.sprite.setImage( self.animations[key] )
         

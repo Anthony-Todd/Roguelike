@@ -25,5 +25,4 @@ class Component(object):
         pass
     @abc.abstractmethod
     def SetEntity(self, entity):
-        print 'base'
         self.entity = entity

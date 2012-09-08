@@ -1,0 +1,120 @@
+{
+    "image":"rmvx-sprite-edits1.png",
+    "x":12,
+    "y":8,
+    "characters":
+    [
+        {
+            "name":"player",
+            "animations":
+            [
+			    { "id":"walk_up",	"sequence": [2,1,0],    "loop":true, "speed":0.125 },
+			    { "id":"walk_right","sequence": [14,13,12], "loop":true, "speed":0.125 },
+			    { "id":"walk_left", "sequence": [26,25,24], "loop":true, "speed":0.125 },
+			    { "id":"walk_down",	"sequence": [38,37,36], "loop":true, "speed":0.125 },
+			    { "id":"idle_up", 	"sequence": [1],        "loop":true, "speed":0.125 },
+			    { "id":"idle_right","sequence": [13],       "loop":true, "speed":0.125 },
+			    { "id":"idle_left",	"sequence": [25],       "loop":true, "speed":0.125 },
+			    { "id":"idle_down", "sequence": [37],       "loop":true, "speed":0.125 }
+        	]
+        },
+        {
+            "name":"AI0",
+            "animations":
+            [
+			    { "id":"walk_up",	"sequence": [50,49,48], "loop":true, "speed":0.125 },
+			    { "id":"walk_right","sequence": [62,61,60], "loop":true, "speed":0.125 },
+			    { "id":"walk_left", "sequence": [74,73,72], "loop":true, "speed":0.125 },
+			    { "id":"walk_down",	"sequence": [86,85,84], "loop":true, "speed":0.125 },
+			    { "id":"idle_up", 	"sequence": [49],       "loop":true, "speed":0.125 },
+			    { "id":"idle_right","sequence": [61],       "loop":true, "speed":0.125 },
+			    { "id":"idle_left",	"sequence": [73],       "loop":true, "speed":0.125 },
+			    { "id":"idle_down", "sequence": [85],       "loop":true, "speed":0.125 }
+        	]
+        },
+        {
+            "name":"NPC",
+            "animations":
+            [
+			    { "id":"walk_up",	"sequence": [5,4,3],    "loop":true, "speed":0.125 },
+			    { "id":"walk_right","sequence": [17,16,15], "loop":true, "speed":0.125 },
+			    { "id":"walk_left", "sequence": [29,28,27], "loop":true, "speed":0.125 },
+			    { "id":"walk_down",	"sequence": [41,40,39], "loop":true, "speed":0.125 },
+			    { "id":"idle_up", 	"sequence": [4],        "loop":true, "speed":0.125 },
+			    { "id":"idle_right","sequence": [16],       "loop":true, "speed":0.125 },
+			    { "id":"idle_left",	"sequence": [28],       "loop":true, "speed":0.125 },
+			    { "id":"idle_down", "sequence": [40],       "loop":true, "speed":0.125 }
+        	]
+        },
+        {
+            "name":"AI1",
+            "animations":
+            [
+			    { "id":"walk_up",	"sequence": [53,52,51], "loop":true, "speed":0.125 },
+			    { "id":"walk_right","sequence": [65,64,63], "loop":true, "speed":0.125 },
+			    { "id":"walk_left", "sequence": [77,76,75], "loop":true, "speed":0.125 },
+			    { "id":"walk_down",	"sequence": [89,88,87], "loop":true, "speed":0.125 },
+			    { "id":"idle_up", 	"sequence": [52],       "loop":true, "speed":0.125 },
+			    { "id":"idle_right","sequence": [64],       "loop":true, "speed":0.125 },
+			    { "id":"idle_left",	"sequence": [76],       "loop":true, "speed":0.125 },
+			    { "id":"idle_down", "sequence": [88],       "loop":true, "speed":0.125 }
+        	]
+        },
+        {
+            "name":"AI2",
+            "animations":
+            [
+			    { "id":"walk_up",	"sequence": [8,7,6],    "loop":true, "speed":0.125 },
+			    { "id":"walk_right","sequence": [20,19,18], "loop":true, "speed":0.125 },
+			    { "id":"walk_left", "sequence": [32,31,30], "loop":true, "speed":0.125 },
+			    { "id":"walk_down",	"sequence": [44,43,42], "loop":true, "speed":0.125 },
+			    { "id":"idle_up", 	"sequence": [7],        "loop":true, "speed":0.125 },
+			    { "id":"idle_right","sequence": [19],       "loop":true, "speed":0.125 },
+			    { "id":"idle_left",	"sequence": [31],       "loop":true, "speed":0.125 },
+			    { "id":"idle_down", "sequence": [43],       "loop":true, "speed":0.125 }
+        	]
+        },
+        {
+            "name":"AI3",
+            "animations":
+            [
+			    { "id":"walk_up",	"sequence": [56,55,54], "loop":true, "speed":0.125 },
+			    { "id":"walk_right","sequence": [68,67,66], "loop":true, "speed":0.125 },
+			    { "id":"walk_left", "sequence": [80,79,78], "loop":true, "speed":0.125 },
+			    { "id":"walk_down",	"sequence": [92,91,90], "loop":true, "speed":0.125 },
+			    { "id":"idle_up", 	"sequence": [55],       "loop":true, "speed":0.125 },
+			    { "id":"idle_right","sequence": [67],       "loop":true, "speed":0.125 },
+			    { "id":"idle_left",	"sequence": [79],       "loop":true, "speed":0.125 },
+			    { "id":"idle_down", "sequence": [91],       "loop":true, "speed":0.125 }
+        	]
+        },
+        {
+            "name":"AI4",
+            "animations":
+            [
+			    { "id":"walk_up",	"sequence": [11,10,9],  "loop":true, "speed":0.125 },
+			    { "id":"walk_right","sequence": [23,22,21], "loop":true, "speed":0.125 },
+			    { "id":"walk_left", "sequence": [35,34,33], "loop":true, "speed":0.125 },
+			    { "id":"walk_down",	"sequence": [47,46,45], "loop":true, "speed":0.125 },
+			    { "id":"idle_up", 	"sequence": [10],       "loop":true, "speed":0.125 },
+			    { "id":"idle_right","sequence": [22],       "loop":true, "speed":0.125 },
+			    { "id":"idle_left",	"sequence": [34],       "loop":true, "speed":0.125 },
+			    { "id":"idle_down", "sequence": [46],       "loop":true, "speed":0.125 }
+        	]
+        },
+        {
+            "name":"AI5",
+            "animations":
+            [
+			    { "id":"walk_up",	"sequence": [59,58,57], "loop":true, "speed":0.125 },
+			    { "id":"walk_right","sequence": [71,70,69], "loop":true, "speed":0.125 },
+			    { "id":"walk_left", "sequence": [83,82,81], "loop":true, "speed":0.125 },
+			    { "id":"walk_down",	"sequence": [95,94,93], "loop":true, "speed":0.125 },
+			    { "id":"idle_up", 	"sequence": [58],       "loop":true, "speed":0.125 },
+			    { "id":"idle_right","sequence": [70],       "loop":true, "speed":0.125 },
+			    { "id":"idle_left",	"sequence": [82],       "loop":true, "speed":0.125 },
+			    { "id":"idle_down", "sequence": [94],       "loop":true, "speed":0.125 }
+        	]
+        }
+    ]
+}

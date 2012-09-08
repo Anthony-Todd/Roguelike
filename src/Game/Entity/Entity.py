@@ -13,14 +13,12 @@ class Entity( CocosNode ):
     def __init__(self, **kwargv):
         super(Entity, self).__init__()
         componentList = kwargv.get('Components')
-        print componentList, type(componentList)
         self.componentDict = {}
         self.AddComponents(componentList)
         
     def AddComponents(self, *components):
         for component in components:
             component_type = type(component)
-            print "Type: %s" % component_type
             
             if component_type in self.componentDict:
                 if not component.isUnique:

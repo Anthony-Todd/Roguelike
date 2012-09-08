@@ -4,9 +4,10 @@ Created on Sep 2, 2012
 @author: anthony
 '''
 import cocos
-import pyglet
+import pyglet.resource
 
 pyglet.resource.path = ['../assets']
+pyglet.resource.path = ['../assets/textures']
 pyglet.resource.reindex()
 
 cocos.director.director.init()

@@ -26,6 +26,5 @@ class Manager(object):
             
     def Update(self, dt):
         for c in self.components:
-            print c
             c.Update(dt)
         
