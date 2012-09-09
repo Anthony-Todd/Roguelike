@@ -1,7 +1,15 @@
 .settings/org.eclipse.mylyn.tasks.ui.prefs
+<<<<<<< HEAD
 *.pyc
 
 .DS_Store
 assets/.DS_Store
 assets/textures/.DS_Store
 src/Game/.DS_Store
+=======
+*.swp
+*.pyc
+*.db
+*.out
+
+>>>>>>> 50421527b85ada31867cdc1e42778834e2b0df40
