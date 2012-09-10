@@ -4,12 +4,11 @@ Created on Sep 9, 2012
 @author: anthony
 '''
 
-from cocos.layer import Layer
 from cocos.scene import Scene
 from cocos.menu import Menu, EntryMenuItem, TOP, RIGHT
 from cocos.director import director
 from pyglet.window import key
-from Config import Configuration
+
 import __builtin__
 import sys
 
@@ -34,6 +33,8 @@ class Property( EntryMenuItem ):
 
 class PropertyMenu( Menu ):
     
+    PropertiesList = []
+    
     def __init__( self, title=''):
         self.menu_valign = TOP
         self.menu_halign = RIGHT
@@ -41,7 +42,8 @@ class PropertyMenu( Menu ):
         self.menuItems = []
         
         self.AddObject(None, None)
-        
+        for prop in self.PropertiesList:
+            self.AddObject(prop[0], prop[1])
         #item2= Property( Config.Configuration, 'PlayerSpeed')
         #self.create_menu( [item1, item2] )
         
@@ -58,34 +60,31 @@ class PropertyMenu( Menu ):
         self.create_menu( self.menuItems )
     
     def on_quit( self ):
-        director.pop()
+        pass
 
-g_DebugMenue = PropertyMenu('Debug Menu' )
-
-class DebugMenuLayer(Layer):
-    def __init__(self, gameScene):
-        self.game = gameScene
-        super(DebugMenuLayer, self).__init__()
-        self.is_event_handler = True
-    
-    def on_key_press( self, k , m ):
-        self.game.on_key_press(k,m)
+def AppendProperty( obj, key = None ):
+    PropertyMenu.PropertiesList.append( (obj, key) )
 
 class DebugMenu(Scene):
     '''
     classdocs
     '''
-
-
     def __init__( self ):
         super( DebugMenu, self ).__init__()
-        self.layer = DebugMenuLayer(self)
-        self.layer.add( g_DebugMenue, (0,640) )
-        self.add( self.layer )
+        self.propMenu = PropertyMenu('Debug Menu')
+        self.add( self.propMenu )
     
     def on_key_press( self, k , m ):
         print k, m
-        if k is key.F1:
-            director.pop()
-            
-debugMenu = DebugMenu()
+        if k is key.ESCAPE or k is key.F1:
+            director.on_pop()
+    
+    def on_enter(self):
+        print 'Debug Menu Push Handlers'
+        director.window.push_handlers( self )
+        super( Scene, self ).on_enter()
+    
+    def on_exit(self):
+        print 'Debug Menu Remove Handlers'
+        director.window.remove_handlers( self )
+        super( Scene, self ).on_exit()

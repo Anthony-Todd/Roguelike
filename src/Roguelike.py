@@ -13,10 +13,10 @@ resource.reindex()
 director.init()
 
 from Game.Config import LoadCongurationFile, SaveConfigurationFile, Configuration
-from Game.DebugMenu import g_DebugMenue
+from Game.DebugMenu import AppendProperty
 
 LoadCongurationFile('../assets/Config.json')
-g_DebugMenue.AddObject(Configuration, None)
+AppendProperty( Configuration, None )
 
 from Game import g_GameInstance
 
