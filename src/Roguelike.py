@@ -3,20 +3,23 @@ Created on Sep 2, 2012
 
 @author: anthony
 '''
-import cocos
-import pyglet.resource
+from cocos.director import director
+from pyglet import resource
 
-pyglet.resource.path = ['../assets']
-pyglet.resource.path = ['../assets/textures']
-pyglet.resource.reindex()
+resource.path = ['../assets']
+resource.path = ['../assets/textures']
+resource.reindex()
 
-cocos.director.director.init()
+director.init()
+
+from Game.Config import LoadCongurationFile, SaveConfigurationFile, Configuration
+from Game.DebugMenu import g_DebugMenue
+
+LoadCongurationFile('../assets/Config.json')
+g_DebugMenue.AddObject(Configuration, None)
 
 from Game import g_GameInstance
-import Game.Config
-
-Game.Config.LoadCongurationFile('../assets/Config.json')
 
 if __name__ == '__main__':
-    cocos.director.director.run(g_GameInstance)
-    Game.Config.SaveConfigurationFile('../assets/Config.json')
+    director.run(g_GameInstance)
+    SaveConfigurationFile('../assets/Config.json')
