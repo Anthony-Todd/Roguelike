@@ -31,6 +31,22 @@ class CharController(actions.Action, tiles.RectMapCollider):
         new.y += dy
         # run the collider
         #dx, dy = self.collide_map(object_map, last, new, dy, dx)
+        if dx < 0.1 and dx > -0.1 and dy < 0.1 and dy > -0.1:
+            print 'idle_down'
+            if self.target.image is not self.target.animations['idle_down']:
+                self.target.image = self.target.animations['idle_down']
+        elif dx > 0.0:
+            if self.target.image is not self.target.animations['walk_right']:
+                self.target.image = self.target.animations['walk_right']
+        elif dx < 0.0:
+            if self.target.image is not self.target.animations['walk_left']:
+                self.target.image = self.target.animations['walk_left']
+        elif dy > 0.0:
+            if self.target.image is not self.target.animations['walk_up']:
+                self.target.image = self.target.animations['walk_up']
+        elif dy < 0.0:
+            if self.target.image is not self.target.animations['walk_down']:
+                self.target.image = self.target.animations['walk_down']
         
         # player position is anchored in the center of the image rect
         self.target.position = new.center
@@ -38,12 +54,16 @@ class CharController(actions.Action, tiles.RectMapCollider):
         # move the scrolling view to center on the player
         scroller.set_focus(*new.center)
 
+class CharacterSprite(Sprite):
+    def __init__(self, animations, defaultAnimation, position=(0,0), rotation=0, scale=1, opacity = 255, color=(255,255,255), anchor = None):
+        self.animations = animations
+        super(CharacterSprite, self).__init__( animations[defaultAnimation], position, rotation, scale, opacity, color, anchor )
+
 class Character( layer.ScrollableLayer ):
     
     def __init__(self, animationDict):
         super(Character, self).__init__()
-        self.animations = animationDict
-        self.sprite = Sprite( self.animations['idle_down'] )
+        self.sprite = CharacterSprite( animationDict, 'idle_down' )
         self.sprite.position = (30,30)
         self.add(self.sprite)
         self.sprite.do(CharController())
