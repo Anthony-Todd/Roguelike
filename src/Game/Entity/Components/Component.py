@@ -23,6 +23,6 @@ class Component(object):
     @abc.abstractmethod
     def Update(self, dt):
         pass
-    @abc.abstractmethod
+
     def SetEntity(self, entity):
         self.entity = entity

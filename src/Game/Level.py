@@ -86,7 +86,7 @@ class Level(cocos.layer.Layer):
         self.player.add(Entity.Factory.Create_AnimatedSprite(playerAnime, 'walk_down',  (320,240)))
         self.player.add(Entity.Factory.Create_AnimatedSprite(playerAnime, 'walk_right', (352,240)))
         #end of test code
-    
+        self.player.add(Entity.Factory.Create_TestInput(None) )
     def LoadLevel(self,Filename):
         pass
         # loaded the tiled level from assets levels directory.

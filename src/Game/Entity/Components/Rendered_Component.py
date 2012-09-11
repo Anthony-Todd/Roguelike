@@ -8,7 +8,7 @@ from Component import Component
 
 from Managers import Manager
 
-g_RenderSpriteManager = Manager.Manager()
+g_RenderSpriteManager = Manager()
 
 class RenderedSpriteComponent( Component ):
     '''
