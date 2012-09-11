@@ -3,8 +3,6 @@ Created on Sep 2, 2012
 
 @author: anthony
 '''
-import Level
-import UI
 from DebugMenu import DebugMenu
 from pyglet.window import key
 from cocos.director import director
@@ -23,12 +21,6 @@ class Game( Scene ):
         '''
         
         super(Game, self).__init__()
-        
-        self.level = Level.Level(parent=self);
-        self.ui    = UI.UI()
-        
-        for l in [self.level, self.ui]:
-            self.add( l )
         
         self.schedule(self.Update)
 
