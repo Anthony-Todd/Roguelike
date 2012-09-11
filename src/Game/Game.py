@@ -7,22 +7,22 @@ from DebugMenu import DebugMenu
 from pyglet.window import key
 from cocos.director import director
 from cocos.scene import Scene
-from cocos import cocosnode, actions, tiles, layer
+from cocos import actions, tiles, layer
 from cocos.sprite import Sprite
 
+from Config import Configuration
+
 from CharacterSheet import DecodeCharacterSheet
-from CodeWarrior.CodeWarrior_suite import target
 
 #from Input import g_keyboardState, g_mouseState
 
 class CharController(actions.Action, tiles.RectMapCollider):
-    MOVE_SPEED = 200
     
     def step(self, dt):
         global keyboard, scroller, object_map
 
-        dx = (keyboard[key.RIGHT] - keyboard[key.LEFT]) * self.MOVE_SPEED *dt
-        dy = (keyboard[key.UP] - keyboard[key.DOWN]) * self.MOVE_SPEED *dt
+        dx = (keyboard[key.RIGHT] - keyboard[key.LEFT]) * Configuration.PlayerSpeed *dt
+        dy = (keyboard[key.UP] - keyboard[key.DOWN]) * Configuration.PlayerSpeed *dt
 
         # get the player's current bounding rectangle
         last = self.target.get_rect()
