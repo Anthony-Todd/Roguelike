@@ -32,7 +32,6 @@ class CharController(actions.Action, tiles.RectMapCollider):
         # run the collider
         #dx, dy = self.collide_map(object_map, last, new, dy, dx)
         if dx < 0.1 and dx > -0.1 and dy < 0.1 and dy > -0.1:
-            print 'idle_down'
             if self.target.image is not self.target.animations['idle_down']:
                 self.target.image = self.target.animations['idle_down']
         elif dx > 0.0:
