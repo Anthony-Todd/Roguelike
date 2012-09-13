@@ -11,12 +11,12 @@ resource.path = ['../assets/textures']
 resource.reindex()
 
 
-from Game import LoadCongurationFile, SaveConfigurationFile, AppendProperty, Game, Configuration
+from Game import LoadConfigurationFile, SaveConfigurationFile, AppendProperty, Game, Configuration
 
 if __name__ == '__main__':
-    LoadCongurationFile('../assets/Config.json')
-    AppendProperty( Configuration, None )
+    LoadConfigurationFile('../assets/Config.json')
+    AppendProperty(Configuration, None)
     
-    director.init()
+    director.init(do_not_scale=True, resizable=True)
     director.run(Game())
     SaveConfigurationFile('../assets/Config.json')

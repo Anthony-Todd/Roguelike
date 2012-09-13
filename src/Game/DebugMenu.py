@@ -12,7 +12,7 @@ from pyglet.window import key
 import __builtin__
 import sys
 
-class Property( EntryMenuItem ):
+class Property(EntryMenuItem):
     
     def __init__(self, obj, key):
         self.key = key
@@ -25,20 +25,20 @@ class Property( EntryMenuItem ):
     def on_entry_callback(self, value):
         print value
         try:
-            type_ = getattr(__builtin__,self.valueType )
+            type_ = getattr(__builtin__,self.valueType)
             typedValue = type_(value)
             setattr(self.obj, self.key, typedValue);
         except:
             print "Unexpected error:", sys.exc_info()[0]
 
-class PropertyMenu( Menu ):
+class PropertyMenu(Menu):
     
     PropertiesList = []
     
-    def __init__( self, title=''):
+    def __init__(self, title=''):
         self.menu_valign = TOP
         self.menu_halign = RIGHT
-        super( PropertyMenu, self ).__init__(title)
+        super(PropertyMenu, self).__init__(title)
         self.menuItems = []
         
         self.AddObject(None, None)
@@ -54,27 +54,27 @@ class PropertyMenu( Menu ):
                     if '__' in k:
                         pass
                     else:
-                        self.menuItems.append( Property( obj, k ) )
+                        self.menuItems.append(Property(obj, k))
             else:
-                self.menuItems.append( Property( obj, key ) )
-        self.create_menu( self.menuItems )
+                self.menuItems.append(Property( obj, key))
+        self.create_menu(self.menuItems)
     
-    def on_quit( self ):
+    def on_quit(self) :
         pass
 
-def AppendProperty( obj, key = None ):
-    PropertyMenu.PropertiesList.append( (obj, key) )
+def AppendProperty(obj, key=None):
+    PropertyMenu.PropertiesList.append((obj, key))
 
 class DebugMenu(Scene):
     '''
     classdocs
     '''
-    def __init__( self ):
-        super( DebugMenu, self ).__init__()
+    def __init__(self):
+        super(DebugMenu, self).__init__()
         self.propMenu = PropertyMenu('Debug Menu')
-        self.add( self.propMenu )
+        self.add(self.propMenu)
     
-    def on_key_press( self, k , m ):
+    def on_key_press(self, k , m):
         print k, m
         if k is key.ESCAPE or k is key.F1:
             director.on_pop()

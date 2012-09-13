@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="dungeon" tilewidth="16" tileheight="16">
+  <image source="textures/dungeon.png" width="640" height="640"/>
+  <tile id="0">
+   <properties>
+    <property name="" value=""/>
+    <property name="left" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="top" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="right" value="yes"/>
+    <property name="top" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="left" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="right" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="80">
+   <properties>
+    <property name="left" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="top" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="81">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="top" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="82">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="top" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="83">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="right" value="yes"/>
+    <property name="top" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="120">
+   <properties>
+    <property name="left" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="123">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="right" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="160">
+   <properties>
+    <property name="left" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="163">
+   <properties>
+    <property name="name" value="wall"/>
+    <property name="right" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="200">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="left" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="201">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="202">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="203">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="name" value="wall"/>
+    <property name="right" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="414">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="left" value="yes"/>
+    <property name="name" value="stone"/>
+    <property name="right" value="yes"/>
+    <property name="top" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="415">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="left" value="yes"/>
+    <property name="name" value="stone"/>
+    <property name="right" value="yes"/>
+    <property name="top" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="454">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="left" value="yes"/>
+    <property name="name" value="stone"/>
+    <property name="right" value="yes"/>
+    <property name="top" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="455">
+   <properties>
+    <property name="bottom" value="yes"/>
+    <property name="left" value="yes"/>
+    <property name="name" value="stone"/>
+    <property name="right" value="yes"/>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="1601" name="dungeon" tilewidth="16" tileheight="16">
+  <image source="textures/dungeon.png" width="640" height="640"/>
+ </tileset>
+ <layer name="background0" width="40" height="40">
+  <properties>
+   <property name="type" value="background"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztllsKwCAMBD13e5v2ovUCYjcvIcyA5C/BIbiOARFc89xCre7/zPMKVcXbv5s/dV61v+z7eP2psH9n/a2w+qrqb/VV1b+TP8usSn+WWeyfjy7+yA/yl/8f+7eiu78dUTmSlUdROZKVR/jzgT8N9b3yVhX1vfJWFfzh76Q/+McH9DRvcg==
+  </data>
+ </layer>
+ <layer name="background1" width="40" height="40">
+  <properties>
+   <property name="type" value="background"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1cEJgDAQRNFN4dqHgt4UtAsFc9eKnAYMIsSN+B/M/V82McMXTNrsHZGwa4d3BF7TBLM2eFdcW9S2FtwH/E2ne+wLvslNbbHgPuAp/ut8eNdwV6XV3hEJgzZ6RwAAAGR0AovgEEU=
+  </data>
+ </layer>
+ <layer name="blocks0" width="40" height="40">
+  <properties>
+   <property name="type" value="blocks"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztVkkKAjEQ7MG56Ff0oj9xuehPBC/6DQUV/ImC66NsDwNNGDNd2SaHKShySWo61RO6iPLHlDljzoF1kVB/DXzrWBCdmBvgDKJfQeqfgXN3ru3BvABnEP0KUt/lfiXpe9Vz0Hf1LxV8/YsNX/9GzDfzpViHDvq+/uX6fiukfL9Pau6L2c8P8K1Y+rIvSD+18NWXfWnqp5xh2tmH6NcBuZ+LFyn9c/EipX/yDWjfTkr/XKDV/5fP5FwvKXz+0+p388NPv8t/OLr81+U/G3LIf7ac5pL/bHnPXBH9UDkwVp6Uuj5zOJSOCfn/+Nw7lI6J3Pwz84YtZyBrqDzUxjxB+t3GPEb6/fOvzxxEqqUOqH9j5iRSLXVA/VsyV8r9+4LoUOA1SaD+bZk75f4r13bzrA/xr2kex1iReZsTvlmPrC8=
+  </data>
+ </layer>
+ <layer name="interacts0" width="40" height="40">
+  <properties>
+   <property name="type" value="interacts"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzskRQFAQRdFvYUjGkAQZGDZkQApsSIUwvQC+hUK1xT1Vd9ldzzm8IVSRilVivMUnVZnKVWG8xadWjWpVZ7wFAAAAsFAGzlWB9Ypro7ZNP953R6+GD//Panlwv6rtnSleuzo+/A8AAPAXJ3glB60=
+  </data>
+ </layer>
+ <layer name="items0" width="40" height="40">
+  <properties>
+   <property name="type" value="items"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1ssRgCAQBNHhE4MGIVlJNhCrpsAmINcFq1/V3Ps4Ev4kBSkH74pvl7WVhfsAAAB289i3ehf+V0eUzuhdAQAAsKfbVr0jJpqte0cAEwM6aQRR
+  </data>
+ </layer>
+</map>
