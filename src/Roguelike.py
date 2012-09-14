@@ -19,4 +19,6 @@ if __name__ == '__main__':
     
     director.init(do_not_scale=True, resizable=True)
     director.run(Game())
-    SaveConfigurationFile('../assets/Config.json')
+    SaveConfigurationFile('../assets/Config.json')    
+
+    

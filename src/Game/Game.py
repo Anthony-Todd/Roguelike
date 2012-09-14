@@ -102,15 +102,15 @@ class Game(Scene):
         
         ## add other layers here
         tilemap = cocos.tiles.load('../assets/level0.tmx')
+        layers = loadLevel.load_level(tilemap)
         
-        scroller.add(tilemap['background0'], z=0)
-        scroller.add(tilemap['background1'], z=1)
-                 
-        object_layer = loadLevel.CollisionLayer(tilemap['blocks0'])
-        scroller.add(object_layer, z=2)
+        topz=0
+        for l in layers:
+            scroller.add(l,z=topz)
+            topz += 1
 
         self.player = Character(self.CharacterAnimations['george'])
-        scroller.add(self.player, z=3)
+        scroller.add(self.player, z=topz)
         
         self.add(scroller)
     

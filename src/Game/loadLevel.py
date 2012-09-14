@@ -4,14 +4,17 @@ import cocos.euclid as eu
 import ast
 
 def load_level(tilemap):
-    llayer = cocos.layer.ScrollableLayer()
-    #llayer.add(tilemap['background0'])#,z=0)
-    llayer.add(tilemap['background1'])#,z=2)
+    layers = []
     
-    #llayer.add(CollisionLayer(tilemap['blocks0']),z=1)
+    for k in sorted(tilemap.__dict__['contents'].keys()):
+        if 'background' in k:
+            layers.append(tilemap[k])
 
-    return llayer
-    
+        elif 'blocks' in k:
+            layers.append(CollisionLayer(tilemap[k]))
+
+    return layers
+
 class CollisionSprite(cocos.sprite.Sprite):
     def __init__(self, image, position):
         super(CollisionSprite, self).__init__(image)
@@ -19,6 +22,7 @@ class CollisionSprite(cocos.sprite.Sprite):
         self.cshape = cocos.collision_model.AARectShape(eu.Vector2(0.0, 0.0), 4, 4)
 
 class CollisionLayer(cocos.layer.ScrollableLayer):
+
     #is_event_handler = True
 
     def __init__(self,tilemap=None, alt_tilemap=None, z=0):
