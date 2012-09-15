@@ -11,52 +11,51 @@ def load_level(tilemap):
             layers.append(tilemap[k])
 
         elif 'blocks' in k:
-            layers.append(CollisionLayer(tilemap[k]))
+            layers.append(collision_layer(tilemap[k]))
 
     return layers
 
-class CollisionSprite(cocos.sprite.Sprite):
-    def __init__(self, image, position):
-        super(CollisionSprite, self).__init__(image)
-        #self.cshape = cocos.collision_model.AARectShape(position, 16, 16)
-        self.cshape = cocos.collision_model.AARectShape(eu.Vector2(0.0, 0.0), 4, 4)
+def collision_layer(tilelayer, alt_tilelayer=None, layer=None):
 
-class CollisionLayer(cocos.layer.ScrollableLayer):
+    def collision_sprite(img):
+        sprite = cocos.sprite.Sprite(img)
+        sprite.cshape = cocos.collision_model.AARectShape(eu.Vector2(0.0,0.0),8,8)
+        return sprite
 
-    #is_event_handler = True
+    #cm = cocos.collision_model.CollisionManagerGrid(0,100,0,100,32,32)
+    cm = cocos.collision_model.CollisionManager()
+    toggle_objs = {}
 
-    def __init__(self,tilemap=None, alt_tilemap=None, z=0):
-        super(CollisionLayer, self).__init__()
-        self.cm = cocos.collision_model.CollisionManager()
-        self.objects = {}
-        self.tilemap = tilemap
-        if tilemap:
-            self.add_tilemap(tilemap,alt_tilemap, z=z)
-        
-    def add_tilemap(self,tilemap,alt_tilemap = None, z=0):
-        for c in tilemap.find_cells(type='block'):
-            sprite = CollisionSprite(c.tile.image.get_image_data().texture, c.center)
-            sprite.position = c.center
-            self.add(sprite)
-            self.cm.add(sprite)
-
-        for c in tilemap.find_cells(type='toggle'):
-            image = c.tile.image.get_image_data().texture
-            sprite = CollisionSprite(image, c.center)
-            sprite.norm = image
-
-            # image to swap to when 'toggled'
-            alt_coords = c['alternate']
-            cell = alt_tilemap.get_cell(*(ast.literal_eval(alt_coords)))
-            sprite.alt = cell.tile.image.get_image_data().texture
-            sprite.toggled = False
+    if layer == None:
+        layer = cocos.layer.ScrollableLayer()
     
-            sprite.position = c.center
+    for col in tilelayer.cells:
+        for cell in col:
+            if cell.tile != None:
+                
+                img = cell.tile.image.get_image_data().texture
+                sprite = collision_sprite(img)
+                sprite.position = cell.center
 
-            self.add(sprite)
-            #self.cm.add(sprite)
-            self.objects[sprite.position] = sprite
-                    
+                if cell.get('type') == 'block':
+                    layer.add(sprite)
+        
+                elif cell.get('type') == 'toggle':
+                    sprite.norm = img
+
+                    # image to swap to when 'toggled'
+                    alt_coords = c['alternate']
+                    cell = alt_tilemap.get_cell(*(ast.literal_eval(alt_coords)))
+                    sprite.alt = cell.tile.image.get_image_data().texture
+                    sprite.toggled = False
+
+                    layer.add(sprite)
+                    toggle_objs[sprite.position] = sprite
+
+                #cm.add(sprite)
+                               
+    return layer
+'''
     def on_mouse_press(self, x, y, buttons, modifiers):
         cell = self.tilemap.get_at_pixel(x,y)
         
@@ -70,4 +69,4 @@ class CollisionLayer(cocos.layer.ScrollableLayer):
             else:
                 sprite.toggled = True
                 sprite.image = sprite.alt
-
+'''
