@@ -27,19 +27,11 @@ class CharController(actions.Action, tiles.RectMapCollider):
         dx = (keyboard[key.RIGHT] - keyboard[key.LEFT]) * Configuration.PlayerSpeed * dt
         dy = (keyboard[key.UP] - keyboard[key.DOWN]) * Configuration.PlayerSpeed * dt
 
-        # get the player's current bounding rectangle
-        #last = self.target.get_rect()
-        #new = last.copy()
-        #new.x += dx
-        #new.y += dy
-
         # run the collider
         (newx, newy) = (self.target.position[0] + dx, self.target.position[1] + dy)
-        #cols = check_collisions(newx, newy, 16)
-        #print len(cols)
-        #cols = check_collisions(self.target)
-        #dx, dy = self.collide_map(object_map, last, new, dy, dx)
-        cols = []
+        (scx, scy) = scroller.pixel_from_screen(newx, newy)
+        cols = check_collisions(scx+150, scy+100, 18)
+
         if len(cols) == 0:
             if dx < 0.1 and dx > -0.1 and dy < 0.1 and dy > -0.1:
                 if self.target.image is not self.target.animations['idle_down']:
@@ -60,11 +52,11 @@ class CharController(actions.Action, tiles.RectMapCollider):
             # player position is anchored in the center of the image rect
             #self.target.position = new.center
             #self.target.cshape.center = new.center
-            self.target.position = eu.Vector2(newx,newy)
+            self.target.position = eu.Vector2(newx, newy)
 
             # move the scrolling view to center on the player
             #scroller.set_focus(*new.center)
-            scroller.set_focus(newx,newy)
+            scroller.set_focus(newx, newy)
 
 class CharacterSprite(Sprite):
 
@@ -80,16 +72,19 @@ class Character(cocos.cocosnode.CocosNode):
     def __init__(self, animationDict):
         super(Character, self).__init__()
         self.sprite = CharacterSprite(animationDict, 'idle_down')
-        self.position = (0,0)
+        self.position = (150,100)
         #self.sprite.position = (30,30)
         self.add(self.sprite)
         self.sprite.do(CharController())
         self.sprite.cshape = cocos.collision_model.AARectShape(eu.Vector2(0.0, 0.0), 16, 16)
 
 cm = None
+
 def check_collisions(x,y,size):
     global cm
-    return #cm.objs_into_box(x-size,x+size,y-size,y+size)
+    return cm.objs_into_box(x-size,x+size,y-size,y+size)
+
+
 
 class Game(Scene):
     '''
@@ -124,19 +119,7 @@ class Game(Scene):
         for l in layers:
             scroller.add(l,z=topz)
             topz += 1
-        '''
-        images = [ pyglet.image.load('george.png'), pyglet.image.load('george.png')]
-        im = pyglet.image.Texture.create(192*2,192)
-        im.blit_into(images[0],0,0,0)
-        im.blit_into(images[1],192,0,0)
-        img = cocos.sprite.Sprite(im)
-        
 
-        ly = cocos.layer.ScrollableLayer()
-        l.add(img)
-        img.position=(300,300)
-        scroller.add(ly,z=topz)
-        '''
         self.player = Character(self.CharacterAnimations['george'])
 
         self.add(scroller,z=0)

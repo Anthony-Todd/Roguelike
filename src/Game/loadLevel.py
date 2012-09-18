@@ -6,8 +6,8 @@ import pyglet
 
 def load_level(tilemap):
     layers = []
-    #cm = cocos.collision_model.CollisionManagerGrid(0,500,0,500,16*1.25,16*1.25)
-    cm = None
+    cm = cocos.collision_model.CollisionManagerGrid(0,40*16,0,40*16,16*1.25,16*1.25)
+    #cm = None
     
     for k in sorted(tilemap.__dict__['contents'].keys()):
         if 'background' in k:
@@ -32,16 +32,18 @@ def collision_layer(tilelayer, cm, alt_tilelayer=None):
 
     layer = cocos.layer.ScrollableLayer()
     im = pyglet.image.Texture.create(40*16, 40*16)
-    print type(tilelayer)
+    #print type(tilelayer)
     for i in range(40):
         for j in range(40):
             cell = tilelayer.get_cell(i,j)
             if cell.tile != None:
-                im.blit_into(cell.tile.image.get_image_data(), i*16, j*16, 0)
-    
-    sprite = cocos.sprite.Sprite(im)
-    sprite.position = (20*16,20*16)
-    layer.add(sprite)
+                img = cell.tile.image.get_image_data()
+                sprite = collision_sprite(img.texture, cell.center)
+                im.blit_into(img, i*16, j*16, 0)
+                cm.add(sprite)
+    spr = cocos.sprite.Sprite(im)
+    spr.position = (20*16,20*16)
+    layer.add(spr)
 
     '''
     batch = cocos.batch.BatchNode()
