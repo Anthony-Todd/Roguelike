@@ -18,6 +18,7 @@ if __name__ == '__main__':
     AppendProperty(Configuration, None)
     
     director.init(do_not_scale=True, resizable=True)
+    director.show_FPS = True
     director.run(Game())
     SaveConfigurationFile('../assets/Config.json')    
 

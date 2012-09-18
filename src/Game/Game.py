@@ -9,6 +9,7 @@ from Config import Configuration
 from DebugMenu import DebugMenu
 import loadLevel
 
+import pyglet
 from pyglet.window import key
 
 import cocos
@@ -34,11 +35,11 @@ class CharController(actions.Action, tiles.RectMapCollider):
 
         # run the collider
         (newx, newy) = (self.target.position[0] + dx, self.target.position[1] + dy)
-        cols = check_collisions(newx, newy, 16)
-        print len(cols)
+        #cols = check_collisions(newx, newy, 16)
+        #print len(cols)
         #cols = check_collisions(self.target)
         #dx, dy = self.collide_map(object_map, last, new, dy, dx)
-
+        cols = []
         if len(cols) == 0:
             if dx < 0.1 and dx > -0.1 and dy < 0.1 and dy > -0.1:
                 if self.target.image is not self.target.animations['idle_down']:
@@ -88,7 +89,7 @@ class Character(cocos.cocosnode.CocosNode):
 cm = None
 def check_collisions(x,y,size):
     global cm
-    return cm.objs_into_box(x-size,x+size,y-size,y+size)
+    return #cm.objs_into_box(x-size,x+size,y-size,y+size)
 
 class Game(Scene):
     '''
@@ -96,7 +97,7 @@ class Game(Scene):
     '''
 
     def __init__(self, *argv, **kwargv): 
-        
+
         super(Game, self).__init__()
         self.schedule(self.Update)
         
@@ -114,6 +115,7 @@ class Game(Scene):
         
         scroller = layer.ScrollingManager()
         
+        
         ## add other layers here
         tilemap = cocos.tiles.load('../assets/level0.tmx')
         layers, cm = loadLevel.load_level(tilemap)
@@ -122,10 +124,21 @@ class Game(Scene):
         for l in layers:
             scroller.add(l,z=topz)
             topz += 1
-
-        self.player = Character(self.CharacterAnimations['george'])
-        #scroller.add(self.player, z=topz)
+        '''
+        images = [ pyglet.image.load('george.png'), pyglet.image.load('george.png')]
+        im = pyglet.image.Texture.create(192*2,192)
+        im.blit_into(images[0],0,0,0)
+        im.blit_into(images[1],192,0,0)
+        img = cocos.sprite.Sprite(im)
         
+
+        ly = cocos.layer.ScrollableLayer()
+        l.add(img)
+        img.position=(300,300)
+        scroller.add(ly,z=topz)
+        '''
+        self.player = Character(self.CharacterAnimations['george'])
+
         self.add(scroller,z=0)
         self.add(self.player, z=1)
 
