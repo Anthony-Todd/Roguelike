@@ -12,13 +12,16 @@ resource.path = ['../assets/textures']
 resource.reindex()
 
 
-from Game import LoadConfigurationFile, SaveConfigurationFile, AppendProperty, Game, Configuration
+from Game import LoadConfigurationFile, SaveConfigurationFile, AppendProperty, Game
+from Game.Config import Configuration as Conf
 
 if __name__ == '__main__':
     LoadConfigurationFile('../assets/Config.json')
-    AppendProperty(Configuration, None)
+    AppendProperty(Conf, None)
     
-    director.init(do_not_scale=True, resizable=True)
+    width = Conf.TileSize * Conf.WindowWidth
+    height = Conf.TileSize * Conf.WindowHeight
+    director.init(width=width, height=height, do_not_scale=True, resizable=True)
     #pyglet.clock.set_fps_limit(30)
     director.show_FPS = True
     director.run(Game())

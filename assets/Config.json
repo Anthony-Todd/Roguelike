@@ -1,4 +1,10 @@
 {
     "AISpeed": 150.0, 
-    "PlayerSpeed": 200.0
+    "CharSize": 32, 
+    "MapHeight": 40, 
+    "MapWidth": 40, 
+    "PlayerSpeed": 200.0, 
+    "TileSize": 16, 
+    "WindowHeight": 30, 
+    "WindowWidth": 30
 }

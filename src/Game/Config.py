@@ -9,6 +9,12 @@ import json
 class Configuration(object):
     AISpeed = 0.8
     PlayerSpeed = 1.0
+    WindowWidth = 30
+    WindowHeight = 30
+    MapWidth = 40
+    MapHeight = 40
+    TileSize = 16
+    CharSize = 32
             
 def LoadConfigurationFile(filename):
     jsonFile = open(filename)
