@@ -16,7 +16,9 @@ from cocos.director import director
 from cocos.scene import Scene
 import cocos.euclid as eu
 
-#cm = cocos.collision_model.CollisionManagerGrid(0,40*16,0,40*16,16*1.25,16*1.25)
+ox = 300  # player starting positions
+oy = 100  # TODO set starting position using tmx map
+
 cm = cocos.collision_model.CollisionManagerGrid(0, Conf.MapWidth * Conf.TileSize,
                                                 0, Conf.MapHeight * Conf.TileSize,
                                                 Conf.TileSize * 1.25,
@@ -29,11 +31,14 @@ class CharController(cocos.actions.Action):
 
         dx = (keyboard[key.RIGHT] - keyboard[key.LEFT]) * Conf.PlayerSpeed * dt
         dy = (keyboard[key.UP] - keyboard[key.DOWN]) * Conf.PlayerSpeed * dt
+        
+        last = self.target.get_rect()
+        new = last.copy()
+        new.x += dx
+        new.y += dy
 
         # run the collider
-        (newx, newy) = (self.target.position[0] + dx, self.target.position[1] + dy)
-        (scx, scy) = scroller.pixel_from_screen(newx, newy)
-        cols = check_collisions(scx+150, scy+100, 18)   #TODO remove magic numbers
+        cols = check_collisions(new)
 
         if len(cols) == 0:
             # fetch character movement animations
@@ -54,10 +59,11 @@ class CharController(cocos.actions.Action):
                     self.target.image = self.target.animations['walk_down']
         
             # move character
-            self.target.position = eu.Vector2(newx, newy)
+            self.target.position = new.center
 
             # move the scrolling view to center on the player
-            scroller.set_focus(newx, newy)
+            scroller.set_focus(*new.center)
+
 
 class CharacterSprite(cocos.sprite.Sprite):
 
@@ -68,19 +74,18 @@ class CharacterSprite(cocos.sprite.Sprite):
         super(CharacterSprite, self).__init__(animations[defaultAnimation], 
                 position, rotation, scale, opacity, color, anchor)
 
-class Character(cocos.cocosnode.CocosNode):
+class Character(cocos.layer.ScrollableLayer):
     
     def __init__(self, animationDict):
         super(Character, self).__init__()
         self.sprite = CharacterSprite(animationDict, 'idle_down')
-        self.position = (150,100)
+        self.sprite.position = (ox,oy)
         self.add(self.sprite)
         self.sprite.do(CharController())
         self.sprite.cshape = cocos.collision_model.AARectShape(eu.Vector2(0.0, 0.0), 16, 16)
 
-
-def check_collisions(x,y,size):
-    return cm.objs_into_box(x-size,x+size,y-size,y+size)
+def check_collisions(rect):
+    return cm.objs_into_box(rect.left, rect.right, rect.bottom, rect.top)
 
 class Game(Scene):
     '''
@@ -102,8 +107,7 @@ class Game(Scene):
         director.window.push_handlers(keyboard)
         
         scroller = cocos.layer.ScrollingManager()
-        
-        
+                
         ## add layers here
         tilemap = cocos.tiles.load('../assets/level0.tmx')
         layers, cm = loadLevel.load_level(tilemap, cm)
@@ -114,10 +118,9 @@ class Game(Scene):
             topz += 1
 
         self.player = Character(self.CharacterAnimations['george'])
-
+        scroller.add(self.player, z=topz)
+        
         self.add(scroller,z=0)
-        self.add(self.player, z=1)
-
     
     def on_key_press(self, k, m):
         if k is key.F1:

@@ -40,7 +40,7 @@ def collision_layer(tilelayer, cm, alt_tilelayer=None):
 
                 if cell.get('type') == 'block':   
                     # create one big background image
-                    large_img.blit_into(img, i*16, j*16, 0)
+                    large_img.blit_into(img, (i*16), (j*16), 0)
                     cm.add(sprite)
 
                 elif cell.get('type') == 'toggle':
